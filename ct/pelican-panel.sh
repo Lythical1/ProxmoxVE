@@ -41,7 +41,7 @@ function update_script() {
     msg_ok "Migrated PHP $CURRENT_PHP to 8.4"
   fi
 
-  if check_for_gh_release "pelican-panel" "pelican-dev/panel"; then
+  if check_for_gh_release "pelican-panel" "pelican/panel"; then
     msg_info "Stopping Service"
     cd /opt/pelican-panel
     $STD php artisan down
@@ -57,7 +57,7 @@ function update_script() {
 
     find /opt/pelican-panel -mindepth 1 -maxdepth 1 ! -name 'backup' ! -name 'plugins' -exec rm -rf {} +
 
-    fetch_and_deploy_gh_release "pelican-panel" "pelican-dev/panel" "prebuild" "latest" "/opt/pelican-panel" "panel.tar.gz"
+    fetch_and_deploy_gh_release "pelican-panel" "pelican/panel" "prebuild" "latest" "/opt/pelican-panel" "panel.tar.gz"
 
     msg_info "Updating Pelican Panel"
     cp -a /opt/backup/.env /opt/pelican-panel/
