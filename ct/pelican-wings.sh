@@ -30,12 +30,12 @@ function update_script() {
     exit
   fi
 
-  if check_for_gh_release "wings" "pelican-dev/wings"; then
+  if check_for_gh_release "wings" "pelican/wings"; then
     msg_info "Stopping Service"
     systemctl stop wings
     msg_ok "Stopped Service"
 
-    fetch_and_deploy_gh_release "wings" "pelican-dev/wings" "singlefile" "latest" "/usr/local/bin" "wings_linux_$(arch_resolve)"
+    fetch_and_deploy_gh_release "wings" "pelican/wings" "singlefile" "latest" "/usr/local/bin" "wings_linux_$(arch_resolve)"
 
     msg_info "Starting Service"
     systemctl start wings
